@@ -1,4 +1,4 @@
-   Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
+Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
 ================================================================
 
 This project is a minimal set of files which enables creating backend server with:
