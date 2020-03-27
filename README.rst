@@ -53,11 +53,16 @@ Start The Server
 ----------------
 
 1. Press F5 to launch the server
-2. Open browser to see the result
+2. Open browser and try the following URLS
    
-   a. http://127.0.0.1:8080
-   b. http://127.0.0.1:8080/users
-   c. http://127.0.0.1:8080/users/1
+   ::
+      GET http://localhost:8080
+      GET http://localhost:8080/api/v1/users
+      GET http://localhost:8080/api/v1/users/1
+      GET http://localhost:8080/api/v1/users/999
+      GET http://localhost:8080/api/v1/docs/sample.html
+      POST http://localhost:8080/api/v1/auth/login?username=simba&password=mypassword
+      POST http://localhost:8080/api/v1/auth/logout
 
 3. Play with index.ts
 

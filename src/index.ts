@@ -1,22 +1,17 @@
 import express from "express";
-import {users} from "./users"
+import { usersRouter } from "./users"
+import { authRouter } from "./auth"
 
 const app = express();
 const port = 8080; // default port to listen
 
-// define a route handler for the default home page
 app.get("/", (req, res) => {
     res.send("Hello world!");
 });
 
-app.get("/users", (req, res) => {
-    res.send(users.getUsers());
-})
-
-app.get("/users/:id", (req, res) => {
-    const id = req.params.id;
-    res.send(users.getUserWithId(parseInt(id, 10)));
-})
+app.use('/api/v1/docs', express.static('docs')); // serve static files
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/users', usersRouter);
 
 // start the Express server
 app.listen(port, () => {

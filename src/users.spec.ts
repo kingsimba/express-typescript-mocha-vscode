@@ -7,6 +7,14 @@ describe('User', () => {
             .and.have.length.greaterThan(1);
     });
 
+    it('can find user with id', () => {
+        expect(users.getUserWithId(1).name).is.not.undefined;
+    });
+
+    it('should return null when id not exists', () => {
+        expect(users.getUserWithId(999)).is.undefined;
+    });
+
     it('have Donald Trump', () => {
         expect(users.getUsers().find(o => o.name.indexOf('Trump')).name)
             .to.be.a('String')
