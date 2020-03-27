@@ -1,13 +1,13 @@
-Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
+   Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
 ================================================================
 
 This project is a minimal set of files which enables creating backend server with:
 
-1. `Node.js`_  link and `Express`_ - Popular backend solution.
+1. `Node.js`_  and `Express`_ - Popular backend solution.
 #. `TypeScript`_ - A language extends from JavaScript. It adds a lot of essential features(such as strong type)
    for enterprise level projects.
-#. `Mocha`_ - the fun, simple, flexible JavaScript test framework
-#. `Chai`_ - a BDD / TDD assertion library for 
+#. `Mocha`_ - the fun, simple, flexible JavaScript test framework.
+#. `Chai`_ - a BDD / TDD assertion library.
 
 .. _Node.js: https://nodejs.org/en/
 .. _Express: https://expressjs.com/
@@ -19,12 +19,18 @@ It takes me some time to learn all the pieces.
 But it's quite enjoyable when all things are in spin.
 Now I can focus on coding & testing and the productivity is impressive.
 
+It's not a trivial work to setup the project. So I created this project to show you the final result.
+I learned it from:
+
+* https://developer.okta.com/blog/2018/11/15/node-express-typescript
+
 Prepare The Project
 -------------------
 
-1. Install VSCode
-2. Install Node.js
-3. Clone the project
+1. Install Node.js
+2. Install VSCode
+#. Install Extensions: Mocha Test Explorer
+#. Clone the project
    
    .. code-block:: bash
    
@@ -42,8 +48,6 @@ Prepare The Project
    .. code-block:: bash
    
       $ code .
-
-#. Install Extensions: Mocha Test Explorer
 
 Start The Server
 ----------------
