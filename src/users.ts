@@ -1,7 +1,7 @@
 export class Users
 {
     private users = [
-        { id: 1, name: "Donalds Trump" },
+        { id: 1, name: "Donald Trump" },
         { id: 2, name: "Mike Pence" },
     ];
 
