@@ -10,7 +10,7 @@ This project is a minimal set of files which enables creating backend server wit
 #. `Chai`_ - a BDD / TDD assertion library for 
 
 .. _Node.js: https://nodejs.org/en/
-.. _Express: https://www.express.com/
+.. _Express: https://expressjs.com/
 .. _TypeScript: https://www.typescriptlang.org/
 .. _Mocha: https://mochajs.org/
 .. _Chai: https://www.chaijs.com/
@@ -48,12 +48,17 @@ Prepare The Project
 Start The Server
 ----------------
 
-1. Press F5 to launch the server.
-2. Open browser to see the result:
+1. Press F5 to launch the server
+2. Open browser to see the result
    
    a. http://127.0.0.1:8080
    b. http://127.0.0.1:8080/users
    c. http://127.0.0.1:8080/users/1
+
+3. Play with index.ts
+
+   The server will restart automatically when you save the file.
+   But you need to refresh the page manually to see the new result.
 
 Start Testing
 -------------
