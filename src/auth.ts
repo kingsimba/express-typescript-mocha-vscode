@@ -20,7 +20,7 @@ const auth = new Auth();
 
 export const authRouter = express.Router();
 
-authRouter.post('login', (req, res) => {
+authRouter.post('/login', (req, res) => {
     const result = auth.login('simba', 'mypassword')
     if (result) {
         res.cookie('authUser', 'simba', { maxAge: auth.maxAge });
@@ -31,7 +31,7 @@ authRouter.post('login', (req, res) => {
     }
 });
 
-authRouter.post('logout', (req, res) => {
+authRouter.post('/logout', (req, res) => {
     res.cookie('authUser', '');
     res.cookie('autoToken', '');
     res.send({ status : 200 });
