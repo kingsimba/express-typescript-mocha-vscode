@@ -4,3 +4,4 @@
     --colors
     --recursive
     ./src/**/*.spec.ts
+    --exit

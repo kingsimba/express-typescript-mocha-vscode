@@ -2,7 +2,7 @@ import express from "express";
 import { usersRouter } from "./users"
 import { authRouter } from "./auth"
 
-const app = express();
+export const app = express();
 const port = 8080; // default port to listen
 
 app.get("/", (req, res) => {

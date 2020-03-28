@@ -29,7 +29,7 @@ Prepare The Project
 
 1. Install Node.js
 2. Install VSCode
-#. Install Extensions: Mocha Test Explorer
+#. Install Extensions: Mocha Test Explorer, ES6 Mocha Snippets
 #. Clone the project
    
    .. code-block:: bash
@@ -64,9 +64,9 @@ Start The Server
       POST http://localhost:8080/api/v1/auth/login?username=simba&password=mypassword
       POST http://localhost:8080/api/v1/auth/logout
 
-3. Play with index.ts
+3. Play with code
 
-   The server will restart automatically when you save the file.
+   The server will restart automatically when you save any file.
    But you need to refresh the page manually to see the new result.
 
 Start Testing

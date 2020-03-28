@@ -7,7 +7,7 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
-    "test": "mocha --require ts-node/register src/**/*.spec.ts"
+    "test": "mocha --require ts-node/register src/**/*.spec.ts --exit"
   },
   "keywords": [],
   "author": "",
