@@ -30,7 +30,8 @@ usersRouter.get('/:id', (req, res) => {
     if (user) {
         res.send(user);
     } else {
-        res.sendStatus(404);
+        res.status(404);
+        res.send({ status : 404 })
     }
 });
 

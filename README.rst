@@ -23,6 +23,7 @@ It's not a trivial work to setup the project. So I created this project to show 
 I learned it from:
 
 * https://developer.okta.com/blog/2018/11/15/node-express-typescript
+* https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
 
 Prepare The Project
 -------------------

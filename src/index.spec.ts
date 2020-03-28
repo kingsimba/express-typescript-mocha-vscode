@@ -29,7 +29,7 @@ describe('App', function () {
         .get('/api/v1/users/999')
         .end(function (err, res) {
           expect(res).to.have.status(404);
-          expect(res.body).to.have.keys('status');
+          expect(res.body.status).equals(404);
 
           done();
         });
