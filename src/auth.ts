@@ -10,7 +10,7 @@ export class Auth {
     maxAge = 1000 * 60 * 24 * 7; // 7 days
 
     login(username: string, password: string): AuthResult {
-        if (username == 'simba' && password == 'mypassword') {
+        if (username === 'simba' && password === 'mypassword') {
             const guid = Guid.create();
             return new AuthResult(guid.toString());
         }
