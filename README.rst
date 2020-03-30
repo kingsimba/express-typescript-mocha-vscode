@@ -24,6 +24,7 @@ I learned it from:
 
 * https://developer.okta.com/blog/2018/11/15/node-express-typescript
 * https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
+* https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
 
 Prepare The Project
 -------------------

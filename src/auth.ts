@@ -21,7 +21,7 @@ const auth = new Auth();
 export const authRouter = express.Router();
 
 authRouter.post('/login', (req, res) => {
-    const result = auth.login('simba', 'mypassword')
+    const result = auth.login(req.query.username, req.query.password)
     if (result) {
         res.cookie('authUser', 'simba', { maxAge: auth.maxAge });
         res.cookie('authToken', result.token);

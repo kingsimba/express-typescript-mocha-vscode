@@ -1,7 +1,6 @@
 import express from 'express';
 
-class Users
-{
+class Users {
     private users = [
         { id: 1, name: "Donald Trump" },
         { id: 2, name: "Mike Pence" },
@@ -11,8 +10,8 @@ class Users
         return this.users;
     }
 
-    getUserWithId(id : number) {
-        return this.users.find(o => o.id === id );
+    getUserWithId(id: number) {
+        return this.users.find(o => o.id === id);
     }
 }
 
@@ -31,7 +30,6 @@ usersRouter.get('/:id', (req, res) => {
         res.send(user);
     } else {
         res.status(404);
-        res.send({ status : 404 })
+        res.send({ status: 404 })
     }
 });
-

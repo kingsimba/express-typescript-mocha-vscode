@@ -6,7 +6,7 @@ describe('Auth', () => {
 
     it('should return valid AuthResult if auth succeed', () => {
         expect(auth.login('simba', 'mypassword').token).to.be.a('String')
-            .which.matches(/[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+/)
+            .which.matches(/[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+/);
     });
 
     it('should undefined if auth failed', () => {
