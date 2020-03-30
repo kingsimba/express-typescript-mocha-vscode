@@ -8,11 +8,11 @@ describe('User', () => {
     });
 
     it('can find user with id', () => {
-        expect(users.getUserWithId(1).name).is.not.undefined;
+        expect(users.getUserWithId(1).name).to.not.equals(undefined);
     });
 
     it('should return null when id not exists', () => {
-        expect(users.getUserWithId(999)).is.undefined;
+        expect(users.getUserWithId(999)).to.equals(undefined);
     });
 
     it('have Donald Trump', () => {

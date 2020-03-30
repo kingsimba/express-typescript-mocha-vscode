@@ -2,16 +2,16 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { app } from './index';
 
-var expect = chai.expect;
+const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('App', function () {
-  describe('/api/v1/users', function () {
-    it('return an array of users', function (done) {
+describe('App', () => {
+  describe('/api/v1/users', () => {
+    it('return an array of users', (done) => {
       chai.request(app)
         .get('/api/v1/users')
-        .end(function (err, res) {
+        .end((err, res) => {
 
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('Array');
@@ -22,12 +22,12 @@ describe('App', function () {
     });
   });
 
-  describe('/api/v1/users/:id', function () {
+  describe('/api/v1/users/:id', () => {
 
-    it('return 404 when the id is invalid', function (done) {
+    it('return 404 when the id is invalid', (done) => {
       chai.request(app)
         .get('/api/v1/users/999')
-        .end(function (err, res) {
+        .end(  (err, res) => {
           expect(res).to.have.status(404);
           expect(res.body.status).equals(404);
 

@@ -10,6 +10,6 @@ describe('Auth', () => {
     });
 
     it('should undefined if auth failed', () => {
-        expect(auth.login('simba', 'badpassword')).to.be.undefined;
+        expect(auth.login('simba', 'badpassword')).equals(undefined);
     });
 });
