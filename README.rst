@@ -14,20 +14,7 @@ And the server is tested with:
 
 *  `Mocha`_ - the fun, simple, flexible JavaScript test framework.
 *  `Chai`_ - a BDD / TDD assertion library.
-
-Change Log
-----------
-
-*  2020-5-29
-
-   *  Use 'ts-node-dev' to relaunch the server when modified.
-   *  Update tslint.json to ignore some warnings.
-   *  Remove deprecated 'test/mocha.opts'. It's replace by:
-   
-      1. 'mochaExplorer.files' and 'mochaExplorer.require' in '.vscode/settings.json'. This is used by Mocha Test Explorer.
-      2. 'mocha' node in 'package.json'. This is used by Mocha(running in console) and Mocha Test Explorer.
-   
-   * Add some scripts in packages.json. So I can use something like: "npm test", "npm run watch".
+*  `Mocha Test Explorer`_ - A VSCode plugin to run tests within VS Code.
 
 Point of interest
 -----------------
@@ -145,3 +132,40 @@ I learned it from:
 .. _TypeScript: https://www.typescriptlang.org/
 .. _Mocha: https://mochajs.org/
 .. _Chai: https://www.chaijs.com/
+.. _`Mocha Test Explorer`: https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-mocha-test-adapter
+
+Change Log
+----------
+
+*  2020-5-29
+
+   *  Use 'ts-node-dev' to launch the server(and re-launch when modified). See "package.json"
+
+      .. code-block:: js
+         
+         "watch": "ts-node-dev --respawn -- src/index.ts"
+
+   *  Update tslint.json to ignore some warnings.
+   *  Remove deprecated 'test/mocha.opts'. It's replace by:
+   
+      1. 'mochaExplorer.files' and 'mochaExplorer.require' in '.vscode/settings.json'. This is used by `Mocha Test Explorer`_.
+         
+         .. code-block:: js
+
+            {
+               "mochaExplorer.files": "src/**/*.spec.ts",
+               "mochaExplorer.require": "ts-node/register/transpile-only"
+            }
+
+      2. 'mocha' node in 'package.json'. This is used by Mocha(running in console) and Mocha Test Explorer.
+   
+   * Add some scripts in packages.json. So I can use something like: "npm test", "npm run watch".
+     
+     .. code-block:: js
+     
+         "scripts": {
+            "build": "npx tsc",
+            "watch": "ts-node-dev --respawn -- src/index.ts",
+            "test": "mocha src/**/*.ts --require='ts-node/register/transpile-only'",
+            "kill": "TaskKill /IM node.exe /F"
+         }

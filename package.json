@@ -4,10 +4,9 @@
     "description": "Develop and ExpressJS webserver using TypeScript",
     "main": "dist/index.js",
     "scripts": {
-        "start": "tsc & node .",
         "build": "npx tsc",
-        "test": "mocha src/**/*.ts --require='ts-node/register/transpile-only'",
         "watch": "ts-node-dev --respawn -- src/index.ts",
+        "test": "mocha src/**/*.ts --require='ts-node/register/transpile-only'",
         "kill": "TaskKill /IM node.exe /F"
     },
     "keywords": [],
