@@ -159,9 +159,9 @@ Change Log
 
       2. 'mocha' node in 'package.json'. This is used by Mocha(running in console) and Mocha Test Explorer.
    
-   * Add some scripts in packages.json. So I can use something like: "npm test", "npm run watch".
+   *  Add some scripts in packages.json. So I can use something like: "npm test", "npm run watch".
      
-     .. code-block:: js
+      .. code-block:: js
      
          "scripts": {
             "build": "npx tsc",
@@ -169,3 +169,26 @@ Change Log
             "test": "mocha src/**/*.ts --require='ts-node/register/transpile-only'",
             "kill": "TaskKill /IM node.exe /F"
          }
+
+   *  Add a test to simulate a complete login process.
+
+      .. code-block:: ts
+
+         it('should succeed if password is correct', async () => {
+               // Agent is used to simulate a complete session.
+               // So the authentication cookies will be effective in subsequent queries.
+               const agent = chai.request.agent(app);
+
+               let res = await agent.get('/api/v1/auth/who-am-i');
+               expect(res, 'return 401 because we have not login yet').to.have.status(401);
+
+               res = await agent.post('/api/v1/auth/login?username=simba&password=mypassword');
+               expect(res).to.have.status(200);
+               expect(res).to.have.cookie('authUser', 'simba');
+               expect(res).to.have.cookie('authToken');
+
+               res = await agent.get('/api/v1/auth/who-am-i');
+               expect(res).to.have.status(200);
+               expect(res.body, 'Because we have login, it should return user name').
+                  to.deep.includes({ username: 'simba' });
+         });

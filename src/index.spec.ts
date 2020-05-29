@@ -35,8 +35,8 @@ describe('App', () => {
         });
 
         it('should succeed if password is correct', async () => {
-            // Agent is used to simulate a single user interaction session.
-            // So it can remember cookies.
+            // Agent is used to simulate a complete session.
+            // So the authentication cookies will be effective in subsequent queries.
             const agent = chai.request.agent(app);
 
             let res = await agent.get('/api/v1/auth/who-am-i');
