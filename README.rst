@@ -55,9 +55,8 @@ Start The Server
 ----------------
 
 1. Press F5 to launch the server
-2. Open browser and try the following URLS
-   
-   ::
+2. Open browser and try the following URLS::
+
       GET http://localhost:8080
       GET http://localhost:8080/api/v1/users
       GET http://localhost:8080/api/v1/users/1

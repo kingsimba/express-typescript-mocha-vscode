@@ -1,8 +1,12 @@
 {
     "files.exclude": {
         "node_modules": true,
-        ".vscode": true,
+        ".vscode": false,
         "dist": true,
         ".gitignore": true
-    }
+    },
+    "editor.formatOnSave": true,
+    "restructuredtext.confPath": "",
+    "mochaExplorer.files": "src/**/*.spec.ts",
+    "mochaExplorer.require": "ts-node/register/transpile-only"
 }
