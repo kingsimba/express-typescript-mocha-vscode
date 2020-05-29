@@ -1,38 +1,38 @@
 Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
 ================================================================
 
-This project is a minimal set of files which enables creating backend server with::
+This project is a minimal set of files which enables creating backend server with:
 
-1. `Node.js`_  and `Express`_ - Popular backend solution.
-#. `TypeScript`_ - A language extends from JavaScript. It adds a lot of essential features(such as strong type)
+*  `Node.js`_  and `Express`_ - Popular backend solution.
+*  `TypeScript`_ - A language extends from JavaScript. It adds a lot of essential features(such as strong type)
    for enterprise level projects.
-#. `Mocha`_ - the fun, simple, flexible JavaScript test framework.
-#. `Chai`_ - a BDD / TDD assertion library.
 
-.. _Node.js: https://nodejs.org/en/
-.. _Express: https://expressjs.com/
-.. _TypeScript: https://www.typescriptlang.org/
-.. _Mocha: https://mochajs.org/
-.. _Chai: https://www.chaijs.com/
-
-It's the result of my learning process.
+If you just starting learning backend development, I hope this project can make things easier for you.
 I will try to explain every bits in the comments of the code.
 
-It takes me some time to learn all the pieces.
-But it's quite enjoyable when all things are in spin.
-Now I can focus on coding & testing and the productivity is impressive.
+And the server is tested with:
 
-It's not a trivial work to setup the project. So I created this project to show you the final result.
-I learned it from:
+*  `Mocha`_ - the fun, simple, flexible JavaScript test framework.
+*  `Chai`_ - a BDD / TDD assertion library.
 
-* https://developer.okta.com/blog/2018/11/15/node-express-typescript
-* https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
-* https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
+Change Log
+----------
+
+*  2020-5-29
+
+   *  Use 'ts-node-dev' to relaunch the server when modified.
+   *  Update tslint.json to ignore some warnings.
+   *  Remove deprecated 'test/mocha.opts'. It's replace by:
+   
+      1. 'mochaExplorer.files' and 'mochaExplorer.require' in '.vscode/settings.json'. This is used by Mocha Test Explorer.
+      2. 'mocha' node in 'package.json'. This is used by Mocha(running in console) and Mocha Test Explorer.
+   
+   * Add some scripts in packages.json. So I can use something like: "npm test", "npm run watch".
 
 Point of interest
 -----------------
 
-1. A comfortable VSCode developing environment.
+1. A enjoyable VSCode developing environment.
 2. Complete testing: unit test + web server test.
 
 Prepare the Project
@@ -61,7 +61,11 @@ Prepare the Project
 Start the Server
 ----------------
 
-1. Press F5 to launch the server
+1. Press Ctrl+Shift+B, select 'npm watch'
+
+   It's configured in '.vscode/tasks.json'.
+   Or you can use 'npm run watch' in console.
+
 2. Open browser and try the following URLS::
 
       GET http://localhost:8080
@@ -125,3 +129,19 @@ Optionally, enable "auto run" and modify any of the \*.spec.ts. When saved, the 
 
 
    10 passing (89ms)
+
+Reference
+---------
+
+It's not a trivial work to setup the project. So I created this project to show you the final result.
+I learned it from:
+
+* https://developer.okta.com/blog/2018/11/15/node-express-typescript
+* https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
+* https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
+
+.. _Node.js: https://nodejs.org/en/
+.. _Express: https://expressjs.com/
+.. _TypeScript: https://www.typescriptlang.org/
+.. _Mocha: https://mochajs.org/
+.. _Chai: https://www.chaijs.com/

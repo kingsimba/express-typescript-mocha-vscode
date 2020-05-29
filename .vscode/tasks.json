@@ -8,16 +8,14 @@
       "script": "build",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build",
-      "detail": "npx tsc"
+      "label": "npm: build"
     },
     {
       "type": "npm",
       "script": "watch",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: watch",
-      "detail": "npx tsc --watch"
+      "label": "npm: watch"
     }
   ]
 }
