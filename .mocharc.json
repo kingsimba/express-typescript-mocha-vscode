@@ -1,0 +1,18 @@
+{
+    "diff": true,
+    "extension": [
+        "ts"
+    ],
+    "package": "./package.json",
+    "reporter": "spec",
+    "slow": 75,
+    "timeout": 2000,
+    "exit": true,
+    "ui": "bdd",
+    "watch-files": [
+        "src/**/*.ts"
+    ],
+    "watch-ignore": [
+        "lib/vendor"
+    ]
+}

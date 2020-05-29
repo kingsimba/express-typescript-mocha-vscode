@@ -157,7 +157,9 @@ Change Log
                "mochaExplorer.require": "ts-node/register/transpile-only"
             }
 
-      2. 'mocha' node in 'package.json'. This is used by Mocha(running in console) and Mocha Test Explorer.
+      2. '.mocharc.json'. This is used by Mocha(running in console) and Mocha Test Explorer.
+      
+         Note: Add ``"exit": true`` in '.mocharc.json' to make sure the mocha process will exit after test completes.
    
    *  Add some scripts in packages.json. So I can use something like: "npm test", "npm run watch".
      

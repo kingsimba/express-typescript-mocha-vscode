@@ -1,6 +1,6 @@
 {
     "name": "express-typescript",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Develop and ExpressJS webserver using TypeScript",
     "main": "dist/index.js",
     "scripts": {
@@ -12,23 +12,6 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "mocha": {
-        "diff": true,
-        "extension": [
-            "ts"
-        ],
-        "package": "./package.json",
-        "reporter": "spec",
-        "slow": 75,
-        "timeout": 2000,
-        "ui": "bdd",
-        "watch-files": [
-            "src/**/*.ts"
-        ],
-        "watch-ignore": [
-            "lib/vendor"
-        ]
-    },
     "dependencies": {
         "@types/cookie-parser": "^1.4.2",
         "cookie-parser": "^1.4.5",
