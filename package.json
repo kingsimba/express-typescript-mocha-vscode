@@ -7,7 +7,8 @@
         "start": "tsc & node .",
         "build": "npx tsc",
         "test": "mocha src/**/*.ts --require='ts-node/register/transpile-only'",
-        "watch": "npx tsc --watch"
+        "watch": "npx tsc --watch",
+        "kill": "TaskKill /IM node.exe /F"
     },
     "keywords": [],
     "author": "",

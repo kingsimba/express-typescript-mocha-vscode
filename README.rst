@@ -1,7 +1,7 @@
 Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
 ================================================================
 
-This project is a minimal set of files which enables creating backend server with:
+This project is a minimal set of files which enables creating backend server with::
 
 1. `Node.js`_  and `Express`_ - Popular backend solution.
 #. `TypeScript`_ - A language extends from JavaScript. It adds a lot of essential features(such as strong type)
@@ -15,6 +15,9 @@ This project is a minimal set of files which enables creating backend server wit
 .. _Mocha: https://mochajs.org/
 .. _Chai: https://www.chaijs.com/
 
+It's the result of my learning process.
+I will try to explain every bits in the comments of the code.
+
 It takes me some time to learn all the pieces.
 But it's quite enjoyable when all things are in spin.
 Now I can focus on coding & testing and the productivity is impressive.
@@ -26,12 +29,20 @@ I learned it from:
 * https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
 * https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
 
-Prepare The Project
+Point of interest
+-----------------
+
+1. A comfortable VSCode developing environment.
+2. Complete testing: unit test + web server test.
+
+Prepare the Project
 -------------------
 
 1. Install Node.js
 2. Install VSCode
-#. Install Extensions: Mocha Test Explorer, ES6 Mocha Snippets
+
+   *  Install VSCode Extension: Mocha Test Explorer
+
 #. Clone the project
    
    .. code-block:: bash
@@ -45,13 +56,9 @@ Prepare The Project
       $ cd express-typescript-mocha-vscode
       $ npm install
 
-#. Open VSCode
-   
-   .. code-block:: bash
-   
-      $ code .
+#. Open 'express-typescript-mocha-vscode.code-workspace' with VSCode
 
-Start The Server
+Start the Server
 ----------------
 
 1. Press F5 to launch the server
@@ -73,8 +80,48 @@ Start The Server
 Start Testing
 -------------
 
-1. Click Testing Panel
-2. Enable auto run
-3. Open users.spec.ts, modify the file
-   
-   And all the test will run automatically. And the test error messages will be shown along with the code.
+There are 3 ways to run the tests.
+
+1. Run from Test Explorer.
+
+.. image:: images/test-explorer.png
+
+Optionally, enable "auto run" and modify any of the \*.spec.ts. When saved, the corresponding tests will run.
+
+2. Click "run" or "debug" in the inlined code.
+
+.. image:: images/inlined-test.png
+
+3. Use "npm test"
+
+.. code-block:: bash
+
+   $ npm test    
+
+   > express-typescript@1.0.0 test C:\Users\kingsimba\Documents\github\express-typescript-mocha-vscode
+   > mocha src/**/*.ts --require='ts-node/register/transpile-only'
+
+   server started at http://localhost:8080
+
+
+   Auth
+      √ should return valid AuthResult if auth succeed
+      √ should undefined if auth failed
+
+   App
+      /api/v1/users
+         √ return an array of users
+      /api/v1/users/:id
+         √ return 404 when the id is invalid
+      /api/v1/auth/login
+         √ should fail if password is incorrect
+         √ should succeed if password is correct
+
+   User
+      √ can show all users
+      √ can find user with id
+      √ should return null when id not exists
+      √ have Donald Trump
+
+
+   10 passing (89ms)
