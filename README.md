@@ -1,10 +1,9 @@
-Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
-================================================================
+# Demo Project of Node.js + Express + TypeScript + Mocha in VSCode
 
 This project is a minimal set of files which enables creating backend server with:
 
-*  `Node.js`_  and `Express`_ - Popular backend solution.
-*  `TypeScript`_ - A language extends from JavaScript. It adds a lot of essential features(such as strong type)
+*  [Node.js](https://nodejs.org/en/)  and [ExpressJS](https://expressjs.com/) - Popular backend solution.
+*  [TypeScript](https://www.typescriptlang.org/) - A language extends from JavaScript. It adds a lot of essential features(such as strong type)
    for enterprise level projects.
 
 If you just starting learning backend development, I hope this project can make things easier for you.
@@ -12,81 +11,87 @@ I will try to explain every bits in the comments of the code.
 
 And the server is tested with:
 
-*  `Mocha`_ - the fun, simple, flexible JavaScript test framework.
-*  `Chai`_ - a BDD / TDD assertion library.
-*  `Mocha Test Explorer`_ - A VSCode plugin to run tests within VS Code.
+*  [Mocha](https://mochajs.org/) - the fun, simple, flexible JavaScript test framework.
+*  [Chai](https://www.chaijs.com/) - a BDD / TDD assertion library.
+*  [Mocha Test Explorer](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-mocha-test-adapter) - A VSCode plugin to run tests within VS Code.
 
-Point of interest
------------------
+## Point of interest
 
 1. A enjoyable VSCode developing environment.
 2. Complete testing: unit test + web server test.
 
-Prepare the Project
--------------------
+## Prepare the Project
 
 1. Install Node.js
 2. Install VSCode
 
    *  Install VSCode Extension: Mocha Test Explorer
 
-#. Clone the project
-   
-   .. code-block:: bash
-   
-      $ git clone git@github.com:kingsimba/express-typescript-mocha-vscode.git
+3. Clone the project
 
-#. Install dependent node packages
-   
-   .. code-block:: bash
-   
-      $ cd express-typescript-mocha-vscode
-      $ npm install
+   ``` 
+   $ git clone git@github.com:kingsimba/express-typescript-mocha-vscode.git
+   ```
 
-#. Open 'express-typescript-mocha-vscode.code-workspace' with VSCode
+4. Install dependent node packages
+  
+   ```  
+   $ cd express-typescript-mocha-vscode
+   $ npm install
+   ```
 
-Start the Server
-----------------
+5. Open 'express-typescript-mocha-vscode.code-workspace' with VSCode
 
-1. Press Ctrl+Shift+B, select 'npm watch'
+## Start the Server
+
+1. Press Ctrl+Shift+B to compile & watch.
 
    It's configured in '.vscode/tasks.json'.
-   Or you can use 'npm run watch' in console.
 
-2. Open browser and try the following URLS::
+   Tip: Try to mess around and see the result in PROBLEMS panel.
 
-      GET http://localhost:8080
-      GET http://localhost:8080/api/v1/users
-      GET http://localhost:8080/api/v1/users/1
-      GET http://localhost:8080/api/v1/users/999
-      GET http://localhost:8080/api/v1/docs/sample.html
-      POST http://localhost:8080/api/v1/auth/login?username=simba&password=mypassword
-      POST http://localhost:8080/api/v1/auth/logout
+2. Press F5 to run & watch.
 
-3. Play with code
+   It's configured in "xxx.workspace" file.
+
+3. Open browser and try the following URLS
+
+   ```
+   GET http://localhost:8080
+   GET http://localhost:8080/api/v1/users
+   GET http://localhost:8080/api/v1/users/1
+   GET http://localhost:8080/api/v1/users/999
+   GET http://localhost:8080/api/v1/docs/sample.html
+   POST http://localhost:8080/api/v1/auth/login?username=simba&password=mypassword
+   POST http://localhost:8080/api/v1/auth/logout
+   ```
+
+4. Play with code
 
    The server will restart automatically when you save any file.
+   (Modify "hello world" to "HELLO" for example)
    But you need to refresh the page manually to see the new result.
 
-Start Testing
--------------
+## Start Testing
 
 There are 3 ways to run the tests.
 
+Warning: Please make sure the serve is shutdown before testing. Press Shift+F5 to stop the server.
+
 1. Run from Test Explorer.
 
-.. image:: images/test-explorer.png
+   ![](images/test-explorer.png)
 
-Optionally, enable "auto run" and modify any of the \*.spec.ts. When saved, the corresponding tests will run.
+   Optionally, enable "auto run" and modify any of the \*.spec.ts. When saved, the corresponding tests will run.
 
 2. Click "run" or "debug" in the inlined code.
 
-.. image:: images/inlined-test.png
+   ![](images/inlined-test.png)
 
 3. Use "npm test"
 
-.. code-block:: bash
 
+   ```
    $ npm test    
 
    > express-typescript@1.0.0 test C:\Users\kingsimba\Documents\github\express-typescript-mocha-vscode
@@ -116,9 +121,9 @@ Optionally, enable "auto run" and modify any of the \*.spec.ts. When saved, the 
 
 
    10 passing (89ms)
+   ```
 
-Reference
----------
+## Reference
 
 It's not a trivial work to setup the project. So I created this project to show you the final result.
 I learned it from:
@@ -127,15 +132,13 @@ I learned it from:
 * https://groundberry.github.io/development/2016/12/10/testing-express-with-mocha-and-chai.html
 * https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
 
-.. _Node.js: https://nodejs.org/en/
-.. _Express: https://expressjs.com/
-.. _TypeScript: https://www.typescriptlang.org/
-.. _Mocha: https://mochajs.org/
-.. _Chai: https://www.chaijs.com/
-.. _`Mocha Test Explorer`: https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-mocha-test-adapter
+## Change Log
 
-Change Log
-----------
+*  2020-08-25
+   
+   * Use F5 to launch the server. https://github.com/kingsimba/express-typescript-mocha-vscode/pull/6
+   * Use Strict Mode - https://github.com/kingsimba/express-typescript-mocha-vscode/pull/5
+   * Compile the whole project and send result to PROBLEMS panel - https://github.com/kingsimba/express-typescript-mocha-vscode/pull/3
 
 *  2020-5-29
 
