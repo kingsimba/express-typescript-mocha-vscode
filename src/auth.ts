@@ -14,7 +14,7 @@ export class Auth {
      * @param password The password
      * @returns Return an AuthResult which contains a token. Return null if failed.
      */
-    login(username: string, password: string): AuthResult {
+    login(username: string, password: string): AuthResult | null {
         if (username === 'simba' && password === 'mypassword') {
             const guid = Guid.create();
             return new AuthResult(guid.toString());

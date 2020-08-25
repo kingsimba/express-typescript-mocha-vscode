@@ -1,7 +1,12 @@
 import express from 'express';
 
+interface User {
+    id: number;
+    name: string;
+}
+
 class Users {
-    private users = [
+    private users: User[] = [
         { id: 1, name: "Donald Trump" },
         { id: 2, name: "Mike Pence" },
     ];
@@ -10,7 +15,7 @@ class Users {
         return this.users;
     }
 
-    getUserWithId(id: number) {
+    getUserWithId(id: number): User | undefined {
         return this.users.find(o => o.id === id);
     }
 }
