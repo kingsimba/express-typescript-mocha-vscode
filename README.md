@@ -74,9 +74,9 @@ And the server is tested with:
 
 ## Start Testing
 
-There are 3 ways to run the tests.
-
 Warning: Please make sure the serve is shutdown before testing. Press Shift+F5 to stop the server.
+
+There are 3 ways to run the tests.
 
 1. Run from Test Explorer.
 
@@ -144,21 +144,21 @@ I learned it from:
 
    *  Use 'ts-node-dev' to launch the server(and re-launch when modified). See "package.json"
 
-      .. code-block:: js
-         
-         "watch": "ts-node-dev --respawn -- src/index.ts"
+      ``` json
+      { "watch": "ts-node-dev --respawn -- src/index.ts" }
+      ```
 
    *  Update tslint.json to ignore some warnings.
    *  Remove deprecated 'test/mocha.opts'. It's replace by:
    
       1. 'mochaExplorer.files' and 'mochaExplorer.require' in '.vscode/settings.json'. This is used by `Mocha Test Explorer`_.
          
-         .. code-block:: js
-
-            {
-               "mochaExplorer.files": "src/**/*.spec.ts",
-               "mochaExplorer.require": "ts-node/register/transpile-only"
-            }
+         ``` json
+         {
+            "mochaExplorer.files": "src/**/*.spec.ts",
+            "mochaExplorer.require": "ts-node/register/transpile-only"
+         }
+         ```
 
       2. '.mocharc.json'. This is used by Mocha(running in console) and Mocha Test Explorer.
       
@@ -166,34 +166,35 @@ I learned it from:
    
    *  Add some scripts in packages.json. So I can use something like: "npm test", "npm run watch".
      
-      .. code-block:: js
-     
-         "scripts": {
-            "build": "npx tsc",
-            "watch": "ts-node-dev --respawn -- src/index.ts",
-            "test": "mocha src/**/*.ts --require='ts-node/register/transpile-only'",
-            "kill": "TaskKill /IM node.exe /F"
-         }
+      ``` json
+      "scripts": 
+      {
+         "build": "npx tsc",
+         "watch": "ts-node-dev --respawn -- src/index.ts",
+         "test": "mocha src/**/*.ts --require='ts-node/register/transpile-only'",
+         "kill": "TaskKill /IM node.exe /F"
+      }
+      ```
 
    *  Add a test to simulate a complete login process.
 
-      .. code-block:: ts
+      ``` ts
+      it('should succeed if password is correct', async () => {
+            // Agent is used to simulate a complete session.
+            // So the authentication cookies will be effective in subsequent queries.
+            const agent = chai.request.agent(app);
 
-         it('should succeed if password is correct', async () => {
-               // Agent is used to simulate a complete session.
-               // So the authentication cookies will be effective in subsequent queries.
-               const agent = chai.request.agent(app);
+            let res = await agent.get('/api/v1/auth/who-am-i');
+            expect(res, 'return 401 because we have not login yet').to.have.status(401);
 
-               let res = await agent.get('/api/v1/auth/who-am-i');
-               expect(res, 'return 401 because we have not login yet').to.have.status(401);
+            res = await agent.post('/api/v1/auth/login?username=simba&password=mypassword');
+            expect(res).to.have.status(200);
+            expect(res).to.have.cookie('authUser', 'simba');
+            expect(res).to.have.cookie('authToken');
 
-               res = await agent.post('/api/v1/auth/login?username=simba&password=mypassword');
-               expect(res).to.have.status(200);
-               expect(res).to.have.cookie('authUser', 'simba');
-               expect(res).to.have.cookie('authToken');
-
-               res = await agent.get('/api/v1/auth/who-am-i');
-               expect(res).to.have.status(200);
-               expect(res.body, 'Because we have login, it should return user name').
-                  to.deep.includes({ username: 'simba' });
-         });
+            res = await agent.get('/api/v1/auth/who-am-i');
+            expect(res).to.have.status(200);
+            expect(res.body, 'Because we have login, it should return user name').
+               to.deep.includes({ username: 'simba' });
+      });
+      ```
