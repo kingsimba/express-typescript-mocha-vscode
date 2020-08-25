@@ -3,19 +3,40 @@
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
+    // This task enables Ctrl+Shift+B to build & watch the project
     {
-      "type": "npm",
-      "script": "build",
-      "group": "build",
-      "problemMatcher": [],
-      "label": "npm: build"
+      "label": "tsc watch",
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "option": "watch",
+      "problemMatcher": [
+        "$tsc-watch" // send result to PROBLEMS panel
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true // default task
+      },
+      "presentation": {
+        "reveal": "never", // build in background
+        "echo": false,
+        "focus": false,
+        "panel": "dedicated"
+      }
     },
     {
-      "type": "npm",
-      "script": "watch",
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "problemMatcher": [
+        "$tsc"
+      ],
       "group": "build",
-      "problemMatcher": [],
-      "label": "npm: watch"
+      "label": "tsc: build - tsconfig.json",
+      "presentation": {
+        "reveal": "never",
+        "echo": false,
+        "focus": false,
+        "panel": "dedicated"
+      }
     }
   ]
 }
