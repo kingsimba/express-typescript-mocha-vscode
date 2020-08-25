@@ -11,5 +11,16 @@
 			"navinfo",
 			"respawn"
 		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"command": "npm run watch",
+				"name": "Run npm watch",
+				"request": "launch",
+				"type": "node-terminal"
+			}
+		]
 	}
 }
