@@ -19,8 +19,8 @@ app.get("/", (req, res) => {
 });
 
 // Demonstrate how to read data from another server and return the result.
-app.get('/navinfo', async (req, res) => {
-    request('https://www.navinfo.com', { json: true }, (err, res1, body) => {
+app.get('/navinfo', (req, res) => {
+    request('https://www.navinfo.com', { json: true }, (err, res1) => {
         if (res1) {
             res.send(res1.body);
         } else {

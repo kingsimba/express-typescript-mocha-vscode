@@ -10,6 +10,7 @@ export class Auth {
 
     /**
      * Perform login
+     *
      * @param username The username
      * @param password The password
      * @returns Return an AuthResult which contains a token. Return null if failed.
@@ -30,8 +31,8 @@ const auth = new Auth();
 export const authRouter = express.Router();
 
 // for "/login", verify user name and password
-authRouter.post('/login', (req, res) => {
-    const result = auth.login(req.query.username, req.query.password)
+authRouter.post('/login', (req: { query: { username: string, password: string } }, res) => {
+    const result = auth.login(req.query.username, req.query.password);
     if (result) {
         // set cookie of login succeeded
         res.cookie('authUser', 'simba', { maxAge: auth.maxAge });
@@ -43,7 +44,7 @@ authRouter.post('/login', (req, res) => {
     }
 });
 
-authRouter.get('/who-am-i', (req, res) => {
+authRouter.get('/who-am-i', (req: { cookies: { authUser: string } }, res) => {
     if (req.cookies != undefined && req.cookies.authUser != undefined) {
         res.send({ username: req.cookies.authUser });
     } else {

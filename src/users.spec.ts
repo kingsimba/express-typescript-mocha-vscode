@@ -10,7 +10,7 @@ describe('User', () => {
     it('can find user with id', () => {
         const user = users.getUserWithId(1);
         expect(user).exist;
-        expect(user!.name).equals("Donald Trump");
+        expect(user?.name).equals("Donald Trump");
     });
 
     it('should return null when id not exists', () => {
@@ -20,7 +20,7 @@ describe('User', () => {
     it('have Donald Trump', () => {
         const trump = users.getUsers().find(o => o.name.indexOf('Trump'));
         expect(trump).exist;
-        expect(trump!.name)
+        expect(trump?.name)
             .to.be.a('String')
             .and.matches(/\bDonald\b/);
     });
