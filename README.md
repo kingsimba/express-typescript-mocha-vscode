@@ -21,7 +21,7 @@ I will try to explain every bits in the comments of the code.
 
 1. A enjoyable VSCode developing environment.
 2. Complete testing: unit test + web server test.
-3. Deploy server with docker.
+3. Creat a very slim production Docker image. Deploy with `docker-compose`.
 
 ## Prepare the Project
 
