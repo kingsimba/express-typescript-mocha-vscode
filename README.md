@@ -13,7 +13,7 @@ I will try to explain every bits in the comments of the code.
 - [Prepare the Project](#prepare-the-project)
 - [Start the Server](#start-the-server)
 - [Start Testing](#start-testing)
-- [Deploy with Docker](#deploy-with-docker)
+- [Build with Docker](#build-with-docker)
 - [Reference](#reference)
 - [Change Log](#change-log)
 
@@ -133,52 +133,67 @@ There are 3 ways to run the tests.
    10 passing (89ms)
    ```
 
-## Deploy with Docker
+## Build with Docker
 
-There are 3 docker-releated files:
+There are 3 docker-releated files.
 
-1. `Dockerfile` and `.dockerignore`. They are used to build docker image.
-2. `docker-compose.yaml`. It's usually used to start several docker container at once(backend & frontend for example). But we just use it to start the backend.
+`Dockerfile` and `.dockerignore`. They are used to build docker image.
 
-   ```
-   $ docker-compose up
-   Creating network "express-typescript-mocha-vscode_default" with the default driver
-   Building backend
-   [+] Building 37.9s (11/11) FINISHED
-   => [internal] load build definition from Dockerfile                                                               0.1s
-   => => transferring dockerfile: 452B                                                                               0.0s
-   => [internal] load .dockerignore                                                                                  0.1s
-   => => transferring context: 66B                                                                                   0.0s
-   => [internal] load metadata for docker.io/library/node:14                                                         9.0s
-   => [internal] load build context                                                                                  0.1s
-   => => transferring context: 516.21kB                                                                              0.0s
-   => [1/6] FROM docker.io/library/node:14@sha256:4164d987bfceb62b17db4938d535dd31fc50d6ee0b4e00ac7a774f82af408d48   0.0s
-   => CACHED [2/6] WORKDIR /usr/src/app                                                                              0.0s
-   => CACHED [3/6] COPY package*.json ./                                                                             0.0s
-   => [4/6] RUN npm install                                                                                         24.1s
-   => [5/6] COPY . .                                                                                                 0.1s
-   => [6/6] RUN npm run build                                                                                        3.2s
-   => exporting to image                                                                                             1.2s
-   => => exporting layers                                                                                            1.1s
-   => => writing image sha256:03da74ad3c7005d1ed7effcf511b916ac63f475fc606dbbaf56967cf738d18fe                       0.0s
-   => => naming to docker.io/library/express-typescript-mocha-vscode_backend                                         0.0s
+```
+$ docker build . -t simba/my_server --target my_server
+> express-typescript@1.1.0 docker:build
+> docker build . -t my_server --target my_server
 
-   Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
-   WARNING: Image for service backend was built because it did not already exist.
-            To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
-   Creating express-typescript-mocha-vscode_backend_1 ... done
-   Attaching to express-typescript-mocha-vscode_backend_1
-   backend_1  | server started at http://localhost:8080
-   ```
+[+] Building 69.9s (14/14) FINISHED
+=> [internal] load build definition from Dockerfile
+=> => transferring dockerfile: 38B
+=> [internal] load .dockerignore
+=> => transferring context: 78B
+=> [internal] load metadata for docker.io/library/node:14.16.1-stretch-slim
+=> [internal] load build context
+=> => transferring context: 33.92kB
+=> [nodejs_build 1/7] FROM docker.io/library/node:14.16.1-stretch-slim@sha256:58dbfbdf664f703072bd8263b787301614579c8e345029cdc3d9acf682e853a9
+=> CACHED [nodejs_build 2/7] WORKDIR /usr/src/app
+=> [nodejs_build 3/7] COPY package.json .
+=> [nodejs_build 4/7] RUN npm install
+=> [nodejs_build 5/7] COPY . .
+=> [nodejs_build 6/7] RUN npm run build
+=> [nodejs_build 7/7] RUN npm prune --production
+=> [my_server 3/4] COPY --from=nodejs_build /usr/src/app/node_modules ./node_modules
+=> [my_server 4/4] COPY --from=nodejs_build /usr/src/app/dist ./dist
+=> exporting to image
+=> => exporting layers
+=> => writing image sha256:c7ba834c46dff5337d2bbc09d6a5c0dfc68cff032198a556ccfd7ef5aa5a36bc
+=> => naming to docker.io/library/my_server
+```
 
-   If succeeded, the server should be running on http://localhost:8080
+Test the image:
+
+```
+$ docker run -it simba/my_server /bin/sh
+# ls
+dist  node_modules
+# node dist/index.js
+server started at http://localhost:8080
+```
+
+`docker-compose.yaml` is usually used to start several docker container at once(backend & frontend for example). But we just use it to start the backend.
+
+```
+$ docker-compose up
+simba@simba-pc:~/github/kingsimba/express-typescript-mocha-vscode$ docker-compose up
+Recreating express-typescript-mocha-vscode_backend_1 ... done
+Attaching to express-typescript-mocha-vscode_backend_1
+backend_1  | server started at http://localhost:8080
+```
+
+If succeeded, the server should be running on http://localhost:8080
 
 That's enough for testing the container. But if you want to publish your image to [docker hub](https://hub.docker.com/). You need:
 
 ```
-docker build . -t USERNAME/IMAGE_NAME
 docker login
-docker push USERNAME/IMAGE_NAME
+docker push simba/my_server # change `simba/my_server` to your own name
 ```
 
 ## Reference
@@ -192,6 +207,10 @@ I learned it from:
 - https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 
 ## Change Log
+
+- 2022-03-29
+
+  - Use docker [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/) to create a very slim production image.
 
 - 2021-12-24
 

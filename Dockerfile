@@ -1,26 +1,33 @@
-# Use nodejs 14 as base image
-FROM node:14
+#############################################################
+FROM node:14.16.1-stretch-slim as nodejs_build
 
 # Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
+# Install all dependencies. 
+# Do it before copying source code will make Docker cache more useful.
+COPY package.json .
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
 
-# Bundle app source
+# Copy code
 COPY . .
 
-# Build. Generate `dist` folder
+# Build Typescript
 RUN npm run build
 
-# EXPOSE 8080 in the container
-EXPOSE 8080
+# Remove dev dependencies
+RUN npm prune --production
 
-# Run the server
+#############################################################
+# Create production image
+FROM node:14.16.1-stretch-slim as my_server
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# copy build artifacts
+COPY --from=nodejs_build /usr/src/app/node_modules ./node_modules
+COPY --from=nodejs_build /usr/src/app/dist ./dist
+
+EXPOSE 8000
 CMD [ "node", "dist/index.js" ]

@@ -1,7 +1,8 @@
 version: '3.9'
 services:
   backend:
-    build: .
+    image: simba/my_server
+    # build: .
     ports:
       # map 8080 on host to the 8080 in the container
       - '8080:8080'
